@@ -44,11 +44,11 @@ if (!MONGO_URI) {
   process.exit(1);
 }
 
+const mongoose = require("mongoose");
+
 mongoose
-  .connect(MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    dbName: "money_manager_db",
+  .connect(process.env.MONGO_URI, {
+    dbName: "money_manager_db", // optional if included in URI
   })
   .then(() => {
     console.log("✅ MongoDB Connected Successfully");
@@ -66,6 +66,7 @@ mongoose
     console.error("❌ MongoDB Connection Error:", err);
     process.exit(1); // Stop server if DB fails
   });
+
 
 // ============================
 // ✅ API Routes
