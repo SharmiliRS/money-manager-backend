@@ -44,8 +44,6 @@ if (!MONGO_URI) {
   process.exit(1);
 }
 
-const mongoose = require("mongoose");
-
 mongoose
   .connect(process.env.MONGO_URI, {
     dbName: "money_manager_db", // optional if included in URI
